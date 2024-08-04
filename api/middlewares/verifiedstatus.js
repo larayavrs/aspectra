@@ -7,14 +7,14 @@ module.exports = catchasync(async (req, _, next) => {
     if (!user)
       throw new GeneralError({
         type: 'verified-status',
-        msg: 'Hubo un error mediante la autenticación. Por favor, inicie sesión nuevamente.',
+        msg: 'An error occurred while verifying the user status. Please try again later.',
         statusCode: 401,
       });
     if (user.verified) next();
     else
       throw new GeneralError({
         type: 'verified-status',
-        msg: 'Por favor, verifica tu cuenta para poder realizar esta acción.',
+        msg: 'Please verify your email address to access this resource.',
         statusCode: 403,
       });
   } catch (err) {
