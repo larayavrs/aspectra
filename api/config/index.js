@@ -7,7 +7,7 @@ if (!env.NODE_ENV) {
 
 module.exports = {
   global: {
-    app_name: env.APP_NAME || 'SmartPOS Cloud',
+    app_name: env.APP_NAME || 'Aspectra API',
     env: env.NODE_ENV || 'development',
     port: env.PORT || 3000,
     base_url: env.BASE_URL || 'http://localhost:3000',
@@ -38,14 +38,6 @@ module.exports = {
     credentials: true,
     optionsSuccessStatus: 204,
     maxAge: 3600,
-  },
-  payments: {
-    paypal: {
-      client_id: env.PAYPAL_CLIENT_ID,
-      client_secret: env.PAYPAL_CLIENT_SECRET,
-      mode: env.PAYPAL_MODE || 'sandbox',
-      endpoint: env.PAYPAL_ENDPOINT || 'https://api.sandbox.paypal.com',
-    },
   },
   email: {
     host: env.EMAIL_HOST,
