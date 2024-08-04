@@ -10,13 +10,13 @@ module.exports = {
       next(
         new GeneralError({
           type: 'too_many_requests',
-          msg: 'Muchas peticiones consecutivas por favor espere 15 minutos para volver a intentarlo',
+          msg: 'Too many consecutive requests, please wait 15 minutes to try again',
           statusCode: 429,
         }),
       );
     },
     message:
-      'Muchas peticiones consecutivas por favor espere 15 minutos para volver a intentarlo',
+      'Too many consecutive requests, please wait 15 minutes to try again',
     standardHeaders: true,
     legacyHeaders: false,
   }),
@@ -27,7 +27,7 @@ module.exports = {
       next(
         new GeneralError({
           type: 'too_many_requests',
-          msg: 'Muchas peticiones consecutivas por favor espere 10 minutos para volver a intentarlo',
+          msg: 'Too many consecutive requests, please wait 10 minutes to try again',
           statusCode: 429,
         }),
       );
@@ -35,7 +35,7 @@ module.exports = {
     keyGenerator: (req) =>
       req.headers['x-forwarded-for'] || req.connection.remoteAddress,
     message:
-      'Muchas peticiones consecutivas por favor espere 10 minutos para volver a intentarlo',
+      'Too many consecutive requests, please wait 10 minutes to try again',
     standardHeaders: true,
     legacyHeaders: false,
   }),
@@ -46,7 +46,7 @@ module.exports = {
       next(
         new GeneralError({
           type: 'too_many_requests',
-          msg: 'Muchas peticiones consecutivas por favor espere 10 minutos para volver a intentarlo',
+          msg: 'Too many consecutive requests, please wait 5 minutes to try again',
           statusCode: 429,
         }),
       );
@@ -54,7 +54,7 @@ module.exports = {
     keyGenerator: (req) =>
       req.headers['x-forwarded-for'] || req.connection.remoteAddress,
     message:
-      'Muchas peticiones consecutivas por favor espere 5 minutos para volver a intentarlo',
+      'Too many consecutive requests, please wait 5 minutes to try again',
     standardHeaders: true,
     legacyHeaders: false,
   }),
