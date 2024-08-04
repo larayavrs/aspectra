@@ -5,7 +5,6 @@ const compression = require('compression');
 const limiter = require('./middlewares/limiter');
 const config = require('./config');
 const cookieParser = require('cookie-parser');
-const email_service = require('./services/email');
 
 // setting up the application
 const app = express();
@@ -46,7 +45,6 @@ app.use(require('./handlers/error')); // error handler
 // listening to the server
 app.listen(config.global.port, async () => {
   try {
-    await email_service.verify_credentials();
     console.log(
       `Server running on port ${config.global.port} with env ${config.global.env}`,
     );
