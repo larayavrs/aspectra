@@ -7,14 +7,14 @@ module.exports = catchasync(async (req, _, next) => {
     if (!user)
       throw new GeneralError({
         type: 'unauthorized',
-        msg: 'Hubo un error al autenticar el usuario, por favor inicia sesión',
+        msg: 'An error has ocurred to get the user. Please, try again later',
         statusCode: 401,
       });
     if (Number(user.id) === Number(req.params.id)) next();
     else
       throw new GeneralError({
         type: 'forbidden',
-        msg: 'No tienes permisos para realizar esta acción',
+        msg: 'You dont have permission to access this resource',
         statusCode: 401,
       });
   } catch (error) {
