@@ -16,14 +16,14 @@ module.exports = catchasync(async (req, _, next) => {
     if (!bearer)
       throw new GeneralError({
         type: 'unauthorized',
-        msg: 'No se encontró el token de autenticación, porfavor inicia sesión',
+        msg: 'Token was not found, incorrect format',
         statusCode: 401,
       });
     bearer = bearer.split(' ')[1];
     if (!bearer)
       throw new GeneralError({
         type: 'unauthorized',
-        msg: 'No se encontró el token, formato incorrecto',
+        msg: 'Token was not found, incorrect format',
         statusCode: 401,
       });
     const payload = await jwt_service.verify(
@@ -35,12 +35,12 @@ module.exports = catchasync(async (req, _, next) => {
       throw new GeneralError({
         statusCode: 401,
         type: 'unauthorized',
-        msg: 'El usuario no existe o ha sido eliminado',
+        msg: 'User doesnt exist or was deleted',
       });
     req.user = { ...payload, new_role: user.role };
     next();
   } catch (error) {
-    error.message = 'Por favor inicia sesión.'
+    error.message = 'Please, login to access this resource';
     next(error);
   }
 });
