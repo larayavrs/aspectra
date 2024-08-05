@@ -1,4 +1,5 @@
 'use strict';
+
 const { Model } = require('sequelize');
 const crypter_service = require('../../services/crypter');
 
@@ -10,22 +11,30 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
+      email: DataTypes.STRING,
+      password: DataTypes.STRING,
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
-      email: DataTypes.STRING,
       verified: DataTypes.BOOLEAN,
       isAdmin: DataTypes.BOOLEAN,
-      password: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: 'User',
       hooks: {
-        beforeCreate: async (user) =>
-          (user.password = await crypter_service.hash(user.password)),
+        beforeCreate: async (user) => {
+          user.password = await crypter_service.hash(user.password);
+          console.info(`Password for ${user.firstName} has been hashed`);
+        },
       },
-      defaultScope: { attributes: { exclude: ['password'] } },
-      scopes: { withPassword: { attributes: {} } },
+      defaultScope: {
+        attributes: { exclude: ['password'] },
+      },
+      scopes: {
+        withPassword: {
+          attributes: {},
+        },
+      },
     },
   );
   return User;
