@@ -11,10 +11,6 @@ module.exports = {
       },
       audienceId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Audience',
-          key: 'id',
-        },
       },
       personId: {
         type: Sequelize.INTEGER,
