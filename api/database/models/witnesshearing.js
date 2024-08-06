@@ -9,7 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'audienceId',
         as: 'audience',
       });
-      // TODO: Add the association with the Person model
+      WitnessHearing.belongsTo(models.Person, {
+        foreignKey: 'personId',
+        as: 'person',
+      });
     }
   }
   WitnessHearing.init(
