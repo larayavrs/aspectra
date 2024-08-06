@@ -14,5 +14,10 @@ router.post(
   users_controller.create,
 );
 
+router.post('/login', validator(users_check.login), users_controller.login);
+
+// TODO:
+// router.get('/verify/:token', users_controller.verify);
+
 // exporting the router
 module.exports = router;
