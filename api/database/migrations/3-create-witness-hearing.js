@@ -14,7 +14,6 @@ module.exports = {
       },
       personId: {
         type: Sequelize.INTEGER,
-        // TODO: Add the reference to the Person model
       },
       createdAt: {
         allowNull: false,
