@@ -23,6 +23,7 @@ module.exports = {
       },
       verified: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
