@@ -12,17 +12,9 @@ module.exports = {
       },
       audienceId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'audiences',
-          key: 'id',
-        },
       },
       personId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'persons',
-          key: 'id',
-        },
       },
       createdAt: {
         allowNull: false,

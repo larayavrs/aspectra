@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon --env-file=.env app.js",
-    "db@dev": "npx sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
+    "db@dev": "npx sequelize db:drop && sequelize db:create && sequelize db:migrate"
   },
   "keywords": [
     "api",
